@@ -1,0 +1,11 @@
+﻿html,body,div,img,ul { border:0px; margin:0px; padding:0px; font:12px "微软雅黑"; color:#333; }
+body { background:#478ee6}
+a{ text-decoration:none;}
+table{font:12px "微软雅黑";}
+.title{font:bolder 16px "微软雅黑"; color:#fff; line-height:36px; margin-left:20px;}
+.content{ margin-left:10px; border-radius:10px; background:#9ac8f8; width:1150px; height:auto !important; }
+.toolsbar { margin:0px 0px 10px 10px; padding:10px; border-radius:10px; background:#9ac8f8; width:1130px; height:auto !important; display:block; }
+.toolsbutton{ line-height:24px; background:#478ee6; border:0px; border-radius:5px; color:#fff; cursor:pointer; width:50px; height:24px; text-align:center;}
+.grid{ padding:10px; width:100%; border:0px; line-height:24px;}
+.grid .header{ background:#478ee6; color:#fff; font-weight:bold;}
+.grid .row{background:#fff;}

@@ -1,0 +1,20 @@
+﻿html,body,div,img,ul { border:0px; margin:0px; padding:0px; font:12px "微软雅黑"; color:#333;}
+body { background:#478ee6}
+a{ text-decoration:none;}
+.header{ height:64px; width:100%; background:#156fdd}
+.head{ height:64px; width:1280px; margin:0 auto; background:#156fdd; position:relative;}
+.logo{float:left; background:url("/style/images/logo.jpg"); width:128px;height:64px; }
+.logout{line-height:24px;position:absolute; bottom:0px;right:0px;background:#ff6a00; border:2px solid #156fdd; border-radius:5px; color:#fff; cursor:pointer; }
+.content{margin:0 auto; width:1280px; height:auto !important; min-height:880px;}
+.leftmenu{float:left; width:120px;height:auto !important;}
+    .leftmenu .menutitle {width:120px; font:bolder 16px "微软雅黑"; color:#fff; line-height:36px; display:block;}
+    .leftmenu .menusub{ font:bold 12px "微软雅黑";color:#fff; width:120px; background:#156fdd; display:block; line-height:24px; border-radius:5px; text-align:center;}
+    .leftmenu ul { list-style:none  }
+    .leftmenu ul li{ width:119px; line-height:24px; background:#478ee6;border-radius:5px; text-align:center; color:#fff; display:block;}
+    .leftmenu ul .menu{cursor:pointer; }
+    .leftmenu ul .menu:hover{color:#ff6a00;background:#156fdd;}
+    .leftmenu ul .act {font:bold; color:#333;}
+.frame{float:left;width:1160px; height:auto !important; border:0px; min-height:880px;}
+.footer{ height:24px; text-align:center; width:1280px; margin:0 auto;}
+.clearline{clear:both; width:100%; height:2px; background:#156fdd;}
+.clear{ clear:both;}

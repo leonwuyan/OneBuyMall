@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Goods";
+}
+<div class="con">
+    @foreach (var item in ViewData["data"] as List<OneBuyMall.Models.Goods>)
+    {
+        <li>@item.Name</li>
+    }
+</div>
