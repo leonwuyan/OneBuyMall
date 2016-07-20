@@ -59,6 +59,29 @@ namespace OneBuyMall.WebSite.Controllers
             return RedirectToAction("ShowResult", result);
         }
         #endregion
+        #region 管理员管理
+        public ActionResult AdminUsers()
+        {
+            return View();
+        }
+        public ActionResult AdminUser(int? ID)
+        {
+            var data = new AdminUser();
+            data.Permission = new System.Collections.BitArray(32,true);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult SaveUsers()
+        {
+            Result result = new Result();
+            return RedirectToAction("ShowResult", result);
+        }
+        public ActionResult Permission(int? p)
+        {
+            var data = MvcApplication.core.GetAllPermission();
+            return View(data);
+        }
+        #endregion
         #region 分类管理
         public ActionResult GoodsGroups()
         {

@@ -1,0 +1,8 @@
+﻿@model System.Collections.BitArray
+<ul class="permission">
+    @foreach (var item in OneBuyMall.Core.AdminPermissions)
+    {
+        var a = @Model[item.ID - 1] ? "checked=checked" : "";
+        <li><input type="checkbox" id="p" name="p_@item.ID" value="@item.Power" @a /><label for="p_@item.ID">@item.Name</label></li>
+    }
+</ul>

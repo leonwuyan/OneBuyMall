@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuyMall.DAL", "OneBuyMal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuyMall.WebSite", "OneBuyMall.WebSite\OneBuyMall.WebSite.csproj", "{7B91E9DD-6579-4120-B8DC-0CECAB026FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuyMal.LogHelper", "OneBuyMal.LogHelper\OneBuyMal.LogHelper.csproj", "{BDE436F5-2AE9-4706-9046-A5431F703535}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuyMall.LogHelper", "OneBuyMal.LogHelper\OneBuyMall.LogHelper.csproj", "{BDE436F5-2AE9-4706-9046-A5431F703535}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

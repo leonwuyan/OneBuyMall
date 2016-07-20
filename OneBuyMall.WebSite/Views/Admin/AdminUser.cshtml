@@ -1,0 +1,11 @@
+﻿@model OneBuyMall.Models.AdminUser
+<h2>AdminUser</h2>
+
+@using (@Html.BeginForm("SaveGoodsGroup", "Admin", FormMethod.Post))
+{
+    @Html.EditorForModel()
+    @Html.DisplayFor(m => m.Permission, "permission")
+
+    <input type="submit" value='@(Model.ID == 0? "添加" : "保存")' />
+    <input type="reset" value="重置" />
+}

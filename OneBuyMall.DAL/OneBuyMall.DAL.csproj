@@ -53,9 +53,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OneBuyMal.LogHelper\OneBuyMal.LogHelper.csproj">
+    <ProjectReference Include="..\OneBuyMal.LogHelper\OneBuyMall.LogHelper.csproj">
       <Project>{bde436f5-2ae9-4706-9046-a5431f703535}</Project>
-      <Name>OneBuyMal.LogHelper</Name>
+      <Name>OneBuyMall.LogHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

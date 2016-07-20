@@ -7,7 +7,7 @@
     <ProjectGuid>{BDE436F5-2AE9-4706-9046-A5431F703535}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OneBuyMal.LogHelper</RootNamespace>
+    <RootNamespace>OneBuyMall.LogHelper</RootNamespace>
     <AssemblyName>OneBuyMal.LogHelper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
