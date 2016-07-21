@@ -47,9 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db_tb_config.cs" />
+    <Compile Include="db_onbuymall_models.cs" />
+    <Compile Include="db_onebuymall_enums.cs" />
+    <Compile Include="db_onebuymall_funs.cs" />
     <Compile Include="DBHelper.cs" />
-    <Compile Include="db_tb_goods_group.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
