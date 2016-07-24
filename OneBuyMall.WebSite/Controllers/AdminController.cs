@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using OneBuyMall.Models;
 using System.EnterpriseServices;
 using System.Net;
+using System.Collections;
 
 namespace OneBuyMall.WebSite.Controllers
 {
@@ -62,7 +63,8 @@ namespace OneBuyMall.WebSite.Controllers
         #region 管理员管理
         public ActionResult AdminUsers()
         {
-            return View();
+            var data = MvcApplication.core.GetAdminUsers();
+            return View(data);
         }
         public ActionResult AdminUser(int? ID)
         {
@@ -76,7 +78,7 @@ namespace OneBuyMall.WebSite.Controllers
             Result result = new Result();
             return RedirectToAction("ShowResult", result);
         }
-        public ActionResult Permission(int? p)
+        public ActionResult Permission(BitArray p)
         {
             var data = MvcApplication.core.GetAllPermission();
             return View(data);
@@ -93,7 +95,9 @@ namespace OneBuyMall.WebSite.Controllers
             if (ID > 0)
             {
                 var c = MvcApplication.core.GetGoodsGroup((int)ID);
-                return View(c);
+                if (c != null)
+                    return View(c);
+                return RedirectToAction("ShowResult", ErrorID);
             }
             else
             {
@@ -134,5 +138,6 @@ namespace OneBuyMall.WebSite.Controllers
             ViewData["data"] = new List<Goods> { new Goods{ ID=1, Name="testestet"} };
             return View();
         }
+
     }
 }

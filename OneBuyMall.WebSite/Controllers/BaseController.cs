@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneBuyMall.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace OneBuyMall.WebSite.Controllers
 {
     public class BaseController : Controller
     {
+        public static Result ErrorID = new Result { status = 1, msg = "无效的ID", url = "history.back()" };
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
 

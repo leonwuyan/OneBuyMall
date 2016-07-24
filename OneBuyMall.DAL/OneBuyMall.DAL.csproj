@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db_onbuymall_models.cs" />
-    <Compile Include="db_onebuymall_enums.cs" />
-    <Compile Include="db_onebuymall_funs.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="onebuymall_enums.cs" />
+    <Compile Include="onebuymall_funs.cs" />
+    <Compile Include="onebuymall_models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

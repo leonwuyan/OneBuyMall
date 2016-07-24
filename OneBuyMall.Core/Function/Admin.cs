@@ -1,4 +1,5 @@
-﻿using OneBuyMall.Models;
+﻿using OneBuyMall.DAL;
+using OneBuyMall.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,27 +12,63 @@ namespace OneBuyMall
     {
         public List<AdminUser> GetAdminUsers()
         {
-            return new List<AdminUser>();
+            var ret = new List<AdminUser>();
+            var admins = db_onebuymall.tb_admin.Select();
+            foreach(var admin in admins)
+            {
+                ret.Add(new AdminUser {
+                    ID = admin.id,
+                    Name = admin.name,
+                    Permission = admin.permission.toBitArray()
+                });
+            }
+            return ret;
         }
         public AdminUser GetAdminUser(int ID)
         {
-            return new AdminUser();
+            var admin = db_onebuymall.tb_admin.Select(
+                new db_onebuymall.tb_admin { id=ID },
+                null,
+                new db_onebuymall.e_tb_admin[]{db_onebuymall.e_tb_admin.id}
+                ).FirstOrDefault();
+            if (admin != null)
+            {
+                return new AdminUser
+                {
+                    ID= admin.id,
+                    Name = admin.name,
+                    Permission = admin.permission.toBitArray()
+                };
+            }
+            return null;
         }
         public List<KeyValuePair<string,bool>> PermissionParse(int p)
         {
-
+            var userPerm = new List<KeyValuePair<string, bool>>();
+            for( int i =0; i< AdminPermissions.Count;++i)
+            {
+                var tmp = p.toBitArray();
+                userPerm.Add(new KeyValuePair<string, bool>(AdminPermissions[i].Name, tmp[i]));
+            }
             return new List<KeyValuePair<string, bool>>();
         }
         public List<Permission> GetAllPermission()
         {
-            var data = new List<Permission> { 
-                new Permission{ ID=1, Name="站点管理", Control="admin", Action="configs", Power=1, IsEnabled=false },
-                new Permission{ ID=2, Name="站点管理1", Control="admin", Action="configs", Power=2, IsEnabled=false },
-                new Permission{ ID=3, Name="站点管理2", Control="admin", Action="configs", Power=4, IsEnabled=false },
-                new Permission{ ID=4, Name="站点管理3", Control="admin", Action="configs", Power=8, IsEnabled=false },
-                new Permission{ ID=5, Name="站点管理4", Control="admin", Action="configs", Power=16, IsEnabled=false }
-            };
-            return data;
+            var adminps = new List<Permission>();
+            var ps = db_onebuymall.tb_admin_permission.Select();
+            foreach(var p in ps)
+            {
+                adminps.Add(new Permission
+                {
+                    ID = p.id,
+                    Name = p.name,
+                    Control = p.control,
+                    Action = p.action,
+                    Power = p.permission,
+                    IsEnabled = p.isenabled
+                });
+            }
+            return adminps;
         }
     }
 }

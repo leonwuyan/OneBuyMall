@@ -141,7 +141,6 @@ namespace DALGenerator
                     sb.AppendLine("}");
                 }
                 sb.AppendLine("selectwhere = selectwhere.Substring(0, selectwhere.LastIndexOf(\" and\"));");
-                sb.AppendLine("selectwhere = selectwhere.Substring(0, selectwhere.LastIndexOf(\" and\"));");
                 sb.AppendLine("}");
                 sb.AppendLine("#endregion");
                 sb.AppendLine("#region sortkeys筛选");
@@ -170,9 +169,7 @@ namespace DALGenerator
                 sb.AppendLine("}");
                 sb.AppendLine("#endregion");
                 sb.AppendLine("command = string.Format(command, selectcols, selectwhere, selectsort, selectlimit);");
-
                 sb.AppendLine("cmd.CommandText = command;");
-
                 sb.AppendLine("var data = DBHelper.ExecuteDataTable(cmd);");
                 sb.AppendLine("return data.ToList<" + tablename + ">();");
                 sb.AppendLine("}");
@@ -290,6 +287,7 @@ namespace DALGenerator
                         sb.AppendLine("deletekeys = deletekeys.Substring(0, deletekeys.LastIndexOf(\" and\"));");
                     }
                     sb.AppendLine("command = string.Format(command, deletekeys);");
+                    sb.AppendLine("cmd.CommandText = command;");
                     sb.AppendLine("return DBHelper.ExecuteNonQuery(cmd);");
                     sb.AppendLine("}");
                     #endregion
