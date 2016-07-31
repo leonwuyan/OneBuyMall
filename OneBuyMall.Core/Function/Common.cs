@@ -39,5 +39,20 @@ namespace OneBuyMall
             }
             return HRESULT.Fail;
         }
+        public void CartMerge(List<CartItemBase> l1, List<CartItemBase> l2)
+        {
+            foreach(var i1 in l1)
+            {
+                foreach(var i2 in l2 )
+                {
+                    if(i1.Store == i2.Store && i1.GoodsID == i2.GoodsID)
+                    {
+                        i1.Count += i2.Count;
+                        //更新数据库
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

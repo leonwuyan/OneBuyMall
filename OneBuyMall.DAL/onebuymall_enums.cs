@@ -76,12 +76,28 @@ public enum e_tb_goods_group
 id,
 name,
 }
+public enum e_tb_help
+{
+id,
+title,
+content,
+groupid,
+}
+public enum e_tb_help_group
+{
+id,
+name,
+}
 public enum e_tb_issue
 {
 id,
 goodsid,
-maxcount,
-lastnum,
+total,
+unsold,
+win_num,
+winner_order,
+opentime,
+lastbuytime,
 }
 public enum e_tb_log_consume
 {

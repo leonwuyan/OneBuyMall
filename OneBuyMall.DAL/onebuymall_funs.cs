@@ -2214,6 +2214,360 @@ cmd.CommandText = command;
 return DBHelper.ExecuteNonQuery(cmd);
 }
 }
+public partial class tb_help
+{
+public static List<tb_help> Select(tb_help model = null, e_tb_help[] cols = null, e_tb_help[] keys = null, e_tb_help[] sortkeys = null, Sort sort = Sort.NONE, int start = 0, int limit = 0)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "select {0} from tb_help{1}{2}{3};";
+var selectcols = "";
+var selectwhere = "";
+var selectsort = "";
+var selectlimit = "";
+#region selectcols筛选
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help.id))
+{
+selectcols += "`id`,";
+}
+if (cols.Contains(e_tb_help.title))
+{
+selectcols += "`title`,";
+}
+if (cols.Contains(e_tb_help.content))
+{
+selectcols += "`content`,";
+}
+if (cols.Contains(e_tb_help.groupid))
+{
+selectcols += "`groupid`,";
+}
+selectcols = selectcols.Substring(0, selectcols.LastIndexOf(','));
+}
+else
+{
+selectcols = "*";
+}
+#endregion
+#region selectkeys 筛选
+if (keys != null && keys.Length > 0 && model != null)
+{
+selectwhere = " where ";
+if (keys.Contains(e_tb_help.id))
+{
+selectwhere += "`id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+}
+if (keys.Contains(e_tb_help.title))
+{
+selectwhere += "`title`=@title and";
+cmd.Parameters.AddWithValue("@title", model.title);
+}
+if (keys.Contains(e_tb_help.content))
+{
+selectwhere += "`content`=@content and";
+cmd.Parameters.AddWithValue("@content", model.content);
+}
+if (keys.Contains(e_tb_help.groupid))
+{
+selectwhere += "`groupid`=@groupid and";
+cmd.Parameters.AddWithValue("@groupid", model.groupid);
+}
+selectwhere = selectwhere.Substring(0, selectwhere.LastIndexOf(" and"));
+}
+#endregion
+#region sortkeys筛选
+if (sortkeys != null && sortkeys.Length > 0 && sort != Sort.NONE)
+{
+selectsort = " order by ";
+if (sortkeys.Contains(e_tb_help.id))
+{
+selectsort += "`id`,";
+}
+if (sortkeys.Contains(e_tb_help.title))
+{
+selectsort += "`title`,";
+}
+if (sortkeys.Contains(e_tb_help.content))
+{
+selectsort += "`content`,";
+}
+if (sortkeys.Contains(e_tb_help.groupid))
+{
+selectsort += "`groupid`,";
+}
+selectsort = selectsort.Substring(0, selectsort.LastIndexOf(','));
+switch (sort)
+{
+case Sort.ASC: selectsort += " ASC"; break;
+case Sort.DESC: selectsort += " DESC"; break;
+}
+}
+#endregion
+#region limt
+if (limit > 0)
+{
+selectlimit = " limit " + start + "," + limit;
+}
+#endregion
+command = string.Format(command, selectcols, selectwhere, selectsort, selectlimit);
+cmd.CommandText = command;
+var data = DBHelper.ExecuteDataTable(cmd);
+return data.ToList<tb_help>();
+}
+public static int Insert(tb_help model, e_tb_help[] cols = null)
+{
+if (model == null)
+return -1;
+MySqlCommand cmd = new MySqlCommand();
+var command = "insert into tb_help ({0}) values ({1})";
+var inertcols = "";
+var inertvalues = "";
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help.title))
+{
+inertcols += "`title`,";
+inertvalues += "title,";
+cmd.Parameters.AddWithValue("@title", model.title);
+}
+if (cols.Contains(e_tb_help.content))
+{
+inertcols += "`content`,";
+inertvalues += "content,";
+cmd.Parameters.AddWithValue("@content", model.content);
+}
+if (cols.Contains(e_tb_help.groupid))
+{
+inertcols += "`groupid`,";
+inertvalues += "groupid,";
+cmd.Parameters.AddWithValue("@groupid", model.groupid);
+}
+inertcols = inertcols.Substring(0, inertcols.LastIndexOf(','));
+inertvalues = inertvalues.Substring(0, inertvalues.LastIndexOf(','));
+}
+else
+{
+inertcols += "`title`,";
+inertvalues += "title,";
+cmd.Parameters.AddWithValue("@title", model.title);
+inertcols += "`content`,";
+inertvalues += "content,";
+cmd.Parameters.AddWithValue("@content", model.content);
+inertcols += "`groupid`,";
+inertvalues += "groupid,";
+cmd.Parameters.AddWithValue("@groupid", model.groupid);
+}
+command = string.Format(command, inertcols, inertvalues);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+public static int Update(tb_help model, e_tb_help[] cols = null)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "update tb_help set {0} {1}";
+var updatecols = "";
+var updatekeys = "";
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help.title))
+{
+updatecols += "`title`=@title,";
+cmd.Parameters.AddWithValue("@title", model.title);
+}
+if (cols.Contains(e_tb_help.content))
+{
+updatecols += "`content`=@content,";
+cmd.Parameters.AddWithValue("@content", model.content);
+}
+if (cols.Contains(e_tb_help.groupid))
+{
+updatecols += "`groupid`=@groupid,";
+cmd.Parameters.AddWithValue("@groupid", model.groupid);
+}
+updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
+}
+else
+{
+updatecols += "`title`=@title,";
+cmd.Parameters.AddWithValue("@title", model.title);
+updatecols += "`content`=@content,";
+cmd.Parameters.AddWithValue("@content", model.content);
+updatecols += "`groupid`=@groupid,";
+cmd.Parameters.AddWithValue("@groupid", model.groupid);
+updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
+}
+updatekeys += " where ";
+updatekeys += " `id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+updatekeys = updatekeys.Substring(0, updatekeys.LastIndexOf(" and"));
+command = string.Format(command, updatecols, updatekeys);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+public static int Delete(tb_help model)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "delete from tb_help{0}";
+var deletekeys = "";
+deletekeys += " where ";
+deletekeys += " `id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+deletekeys = deletekeys.Substring(0, deletekeys.LastIndexOf(" and"));
+command = string.Format(command, deletekeys);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+}
+public partial class tb_help_group
+{
+public static List<tb_help_group> Select(tb_help_group model = null, e_tb_help_group[] cols = null, e_tb_help_group[] keys = null, e_tb_help_group[] sortkeys = null, Sort sort = Sort.NONE, int start = 0, int limit = 0)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "select {0} from tb_help_group{1}{2}{3};";
+var selectcols = "";
+var selectwhere = "";
+var selectsort = "";
+var selectlimit = "";
+#region selectcols筛选
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help_group.id))
+{
+selectcols += "`id`,";
+}
+if (cols.Contains(e_tb_help_group.name))
+{
+selectcols += "`name`,";
+}
+selectcols = selectcols.Substring(0, selectcols.LastIndexOf(','));
+}
+else
+{
+selectcols = "*";
+}
+#endregion
+#region selectkeys 筛选
+if (keys != null && keys.Length > 0 && model != null)
+{
+selectwhere = " where ";
+if (keys.Contains(e_tb_help_group.id))
+{
+selectwhere += "`id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+}
+if (keys.Contains(e_tb_help_group.name))
+{
+selectwhere += "`name`=@name and";
+cmd.Parameters.AddWithValue("@name", model.name);
+}
+selectwhere = selectwhere.Substring(0, selectwhere.LastIndexOf(" and"));
+}
+#endregion
+#region sortkeys筛选
+if (sortkeys != null && sortkeys.Length > 0 && sort != Sort.NONE)
+{
+selectsort = " order by ";
+if (sortkeys.Contains(e_tb_help_group.id))
+{
+selectsort += "`id`,";
+}
+if (sortkeys.Contains(e_tb_help_group.name))
+{
+selectsort += "`name`,";
+}
+selectsort = selectsort.Substring(0, selectsort.LastIndexOf(','));
+switch (sort)
+{
+case Sort.ASC: selectsort += " ASC"; break;
+case Sort.DESC: selectsort += " DESC"; break;
+}
+}
+#endregion
+#region limt
+if (limit > 0)
+{
+selectlimit = " limit " + start + "," + limit;
+}
+#endregion
+command = string.Format(command, selectcols, selectwhere, selectsort, selectlimit);
+cmd.CommandText = command;
+var data = DBHelper.ExecuteDataTable(cmd);
+return data.ToList<tb_help_group>();
+}
+public static int Insert(tb_help_group model, e_tb_help_group[] cols = null)
+{
+if (model == null)
+return -1;
+MySqlCommand cmd = new MySqlCommand();
+var command = "insert into tb_help_group ({0}) values ({1})";
+var inertcols = "";
+var inertvalues = "";
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help_group.name))
+{
+inertcols += "`name`,";
+inertvalues += "name,";
+cmd.Parameters.AddWithValue("@name", model.name);
+}
+inertcols = inertcols.Substring(0, inertcols.LastIndexOf(','));
+inertvalues = inertvalues.Substring(0, inertvalues.LastIndexOf(','));
+}
+else
+{
+inertcols += "`name`,";
+inertvalues += "name,";
+cmd.Parameters.AddWithValue("@name", model.name);
+}
+command = string.Format(command, inertcols, inertvalues);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+public static int Update(tb_help_group model, e_tb_help_group[] cols = null)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "update tb_help_group set {0} {1}";
+var updatecols = "";
+var updatekeys = "";
+if (cols != null && cols.Length > 0)
+{
+if (cols.Contains(e_tb_help_group.name))
+{
+updatecols += "`name`=@name,";
+cmd.Parameters.AddWithValue("@name", model.name);
+}
+updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
+}
+else
+{
+updatecols += "`name`=@name,";
+cmd.Parameters.AddWithValue("@name", model.name);
+updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
+}
+updatekeys += " where ";
+updatekeys += " `id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+updatekeys = updatekeys.Substring(0, updatekeys.LastIndexOf(" and"));
+command = string.Format(command, updatecols, updatekeys);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+public static int Delete(tb_help_group model)
+{
+MySqlCommand cmd = new MySqlCommand();
+var command = "delete from tb_help_group{0}";
+var deletekeys = "";
+deletekeys += " where ";
+deletekeys += " `id`=@id and";
+cmd.Parameters.AddWithValue("@id", model.id);
+deletekeys = deletekeys.Substring(0, deletekeys.LastIndexOf(" and"));
+command = string.Format(command, deletekeys);
+cmd.CommandText = command;
+return DBHelper.ExecuteNonQuery(cmd);
+}
+}
 public partial class tb_issue
 {
 public static List<tb_issue> Select(tb_issue model = null, e_tb_issue[] cols = null, e_tb_issue[] keys = null, e_tb_issue[] sortkeys = null, Sort sort = Sort.NONE, int start = 0, int limit = 0)
@@ -2235,13 +2589,29 @@ if (cols.Contains(e_tb_issue.goodsid))
 {
 selectcols += "`goodsid`,";
 }
-if (cols.Contains(e_tb_issue.maxcount))
+if (cols.Contains(e_tb_issue.total))
 {
-selectcols += "`maxcount`,";
+selectcols += "`total`,";
 }
-if (cols.Contains(e_tb_issue.lastnum))
+if (cols.Contains(e_tb_issue.unsold))
 {
-selectcols += "`lastnum`,";
+selectcols += "`unsold`,";
+}
+if (cols.Contains(e_tb_issue.win_num))
+{
+selectcols += "`win_num`,";
+}
+if (cols.Contains(e_tb_issue.winner_order))
+{
+selectcols += "`winner_order`,";
+}
+if (cols.Contains(e_tb_issue.opentime))
+{
+selectcols += "`opentime`,";
+}
+if (cols.Contains(e_tb_issue.lastbuytime))
+{
+selectcols += "`lastbuytime`,";
 }
 selectcols = selectcols.Substring(0, selectcols.LastIndexOf(','));
 }
@@ -2264,15 +2634,35 @@ if (keys.Contains(e_tb_issue.goodsid))
 selectwhere += "`goodsid`=@goodsid and";
 cmd.Parameters.AddWithValue("@goodsid", model.goodsid);
 }
-if (keys.Contains(e_tb_issue.maxcount))
+if (keys.Contains(e_tb_issue.total))
 {
-selectwhere += "`maxcount`=@maxcount and";
-cmd.Parameters.AddWithValue("@maxcount", model.maxcount);
+selectwhere += "`total`=@total and";
+cmd.Parameters.AddWithValue("@total", model.total);
 }
-if (keys.Contains(e_tb_issue.lastnum))
+if (keys.Contains(e_tb_issue.unsold))
 {
-selectwhere += "`lastnum`=@lastnum and";
-cmd.Parameters.AddWithValue("@lastnum", model.lastnum);
+selectwhere += "`unsold`=@unsold and";
+cmd.Parameters.AddWithValue("@unsold", model.unsold);
+}
+if (keys.Contains(e_tb_issue.win_num))
+{
+selectwhere += "`win_num`=@win_num and";
+cmd.Parameters.AddWithValue("@win_num", model.win_num);
+}
+if (keys.Contains(e_tb_issue.winner_order))
+{
+selectwhere += "`winner_order`=@winner_order and";
+cmd.Parameters.AddWithValue("@winner_order", model.winner_order);
+}
+if (keys.Contains(e_tb_issue.opentime))
+{
+selectwhere += "`opentime`=@opentime and";
+cmd.Parameters.AddWithValue("@opentime", model.opentime);
+}
+if (keys.Contains(e_tb_issue.lastbuytime))
+{
+selectwhere += "`lastbuytime`=@lastbuytime and";
+cmd.Parameters.AddWithValue("@lastbuytime", model.lastbuytime);
 }
 selectwhere = selectwhere.Substring(0, selectwhere.LastIndexOf(" and"));
 }
@@ -2289,13 +2679,29 @@ if (sortkeys.Contains(e_tb_issue.goodsid))
 {
 selectsort += "`goodsid`,";
 }
-if (sortkeys.Contains(e_tb_issue.maxcount))
+if (sortkeys.Contains(e_tb_issue.total))
 {
-selectsort += "`maxcount`,";
+selectsort += "`total`,";
 }
-if (sortkeys.Contains(e_tb_issue.lastnum))
+if (sortkeys.Contains(e_tb_issue.unsold))
 {
-selectsort += "`lastnum`,";
+selectsort += "`unsold`,";
+}
+if (sortkeys.Contains(e_tb_issue.win_num))
+{
+selectsort += "`win_num`,";
+}
+if (sortkeys.Contains(e_tb_issue.winner_order))
+{
+selectsort += "`winner_order`,";
+}
+if (sortkeys.Contains(e_tb_issue.opentime))
+{
+selectsort += "`opentime`,";
+}
+if (sortkeys.Contains(e_tb_issue.lastbuytime))
+{
+selectsort += "`lastbuytime`,";
 }
 selectsort = selectsort.Substring(0, selectsort.LastIndexOf(','));
 switch (sort)
@@ -2332,17 +2738,41 @@ inertcols += "`goodsid`,";
 inertvalues += "goodsid,";
 cmd.Parameters.AddWithValue("@goodsid", model.goodsid);
 }
-if (cols.Contains(e_tb_issue.maxcount))
+if (cols.Contains(e_tb_issue.total))
 {
-inertcols += "`maxcount`,";
-inertvalues += "maxcount,";
-cmd.Parameters.AddWithValue("@maxcount", model.maxcount);
+inertcols += "`total`,";
+inertvalues += "total,";
+cmd.Parameters.AddWithValue("@total", model.total);
 }
-if (cols.Contains(e_tb_issue.lastnum))
+if (cols.Contains(e_tb_issue.unsold))
 {
-inertcols += "`lastnum`,";
-inertvalues += "lastnum,";
-cmd.Parameters.AddWithValue("@lastnum", model.lastnum);
+inertcols += "`unsold`,";
+inertvalues += "unsold,";
+cmd.Parameters.AddWithValue("@unsold", model.unsold);
+}
+if (cols.Contains(e_tb_issue.win_num))
+{
+inertcols += "`win_num`,";
+inertvalues += "win_num,";
+cmd.Parameters.AddWithValue("@win_num", model.win_num);
+}
+if (cols.Contains(e_tb_issue.winner_order))
+{
+inertcols += "`winner_order`,";
+inertvalues += "winner_order,";
+cmd.Parameters.AddWithValue("@winner_order", model.winner_order);
+}
+if (cols.Contains(e_tb_issue.opentime))
+{
+inertcols += "`opentime`,";
+inertvalues += "opentime,";
+cmd.Parameters.AddWithValue("@opentime", model.opentime);
+}
+if (cols.Contains(e_tb_issue.lastbuytime))
+{
+inertcols += "`lastbuytime`,";
+inertvalues += "lastbuytime,";
+cmd.Parameters.AddWithValue("@lastbuytime", model.lastbuytime);
 }
 inertcols = inertcols.Substring(0, inertcols.LastIndexOf(','));
 inertvalues = inertvalues.Substring(0, inertvalues.LastIndexOf(','));
@@ -2352,12 +2782,24 @@ else
 inertcols += "`goodsid`,";
 inertvalues += "goodsid,";
 cmd.Parameters.AddWithValue("@goodsid", model.goodsid);
-inertcols += "`maxcount`,";
-inertvalues += "maxcount,";
-cmd.Parameters.AddWithValue("@maxcount", model.maxcount);
-inertcols += "`lastnum`,";
-inertvalues += "lastnum,";
-cmd.Parameters.AddWithValue("@lastnum", model.lastnum);
+inertcols += "`total`,";
+inertvalues += "total,";
+cmd.Parameters.AddWithValue("@total", model.total);
+inertcols += "`unsold`,";
+inertvalues += "unsold,";
+cmd.Parameters.AddWithValue("@unsold", model.unsold);
+inertcols += "`win_num`,";
+inertvalues += "win_num,";
+cmd.Parameters.AddWithValue("@win_num", model.win_num);
+inertcols += "`winner_order`,";
+inertvalues += "winner_order,";
+cmd.Parameters.AddWithValue("@winner_order", model.winner_order);
+inertcols += "`opentime`,";
+inertvalues += "opentime,";
+cmd.Parameters.AddWithValue("@opentime", model.opentime);
+inertcols += "`lastbuytime`,";
+inertvalues += "lastbuytime,";
+cmd.Parameters.AddWithValue("@lastbuytime", model.lastbuytime);
 }
 command = string.Format(command, inertcols, inertvalues);
 cmd.CommandText = command;
@@ -2376,15 +2818,35 @@ if (cols.Contains(e_tb_issue.goodsid))
 updatecols += "`goodsid`=@goodsid,";
 cmd.Parameters.AddWithValue("@goodsid", model.goodsid);
 }
-if (cols.Contains(e_tb_issue.maxcount))
+if (cols.Contains(e_tb_issue.total))
 {
-updatecols += "`maxcount`=@maxcount,";
-cmd.Parameters.AddWithValue("@maxcount", model.maxcount);
+updatecols += "`total`=@total,";
+cmd.Parameters.AddWithValue("@total", model.total);
 }
-if (cols.Contains(e_tb_issue.lastnum))
+if (cols.Contains(e_tb_issue.unsold))
 {
-updatecols += "`lastnum`=@lastnum,";
-cmd.Parameters.AddWithValue("@lastnum", model.lastnum);
+updatecols += "`unsold`=@unsold,";
+cmd.Parameters.AddWithValue("@unsold", model.unsold);
+}
+if (cols.Contains(e_tb_issue.win_num))
+{
+updatecols += "`win_num`=@win_num,";
+cmd.Parameters.AddWithValue("@win_num", model.win_num);
+}
+if (cols.Contains(e_tb_issue.winner_order))
+{
+updatecols += "`winner_order`=@winner_order,";
+cmd.Parameters.AddWithValue("@winner_order", model.winner_order);
+}
+if (cols.Contains(e_tb_issue.opentime))
+{
+updatecols += "`opentime`=@opentime,";
+cmd.Parameters.AddWithValue("@opentime", model.opentime);
+}
+if (cols.Contains(e_tb_issue.lastbuytime))
+{
+updatecols += "`lastbuytime`=@lastbuytime,";
+cmd.Parameters.AddWithValue("@lastbuytime", model.lastbuytime);
 }
 updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
 }
@@ -2392,10 +2854,18 @@ else
 {
 updatecols += "`goodsid`=@goodsid,";
 cmd.Parameters.AddWithValue("@goodsid", model.goodsid);
-updatecols += "`maxcount`=@maxcount,";
-cmd.Parameters.AddWithValue("@maxcount", model.maxcount);
-updatecols += "`lastnum`=@lastnum,";
-cmd.Parameters.AddWithValue("@lastnum", model.lastnum);
+updatecols += "`total`=@total,";
+cmd.Parameters.AddWithValue("@total", model.total);
+updatecols += "`unsold`=@unsold,";
+cmd.Parameters.AddWithValue("@unsold", model.unsold);
+updatecols += "`win_num`=@win_num,";
+cmd.Parameters.AddWithValue("@win_num", model.win_num);
+updatecols += "`winner_order`=@winner_order,";
+cmd.Parameters.AddWithValue("@winner_order", model.winner_order);
+updatecols += "`opentime`=@opentime,";
+cmd.Parameters.AddWithValue("@opentime", model.opentime);
+updatecols += "`lastbuytime`=@lastbuytime,";
+cmd.Parameters.AddWithValue("@lastbuytime", model.lastbuytime);
 updatecols = updatecols.Substring(0, updatecols.LastIndexOf(','));
 }
 updatekeys += " where ";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OneBuyMall.WebSite.Models
 {
@@ -10,6 +11,7 @@ namespace OneBuyMall.WebSite.Models
     {
         [Required]
         [Display(Name = "用户名")]
+        [Remote("CheckUserName","Home")]
         public string UserName { get; set; }
 
 

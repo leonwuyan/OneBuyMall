@@ -17,5 +17,9 @@ namespace OneBuyMall
 
             return HRESULT.Success;
         }
+        public HRESULT ChangeMoney(int ID, int Money, MoneyChangeType changetype = MoneyChangeType.Consume)
+        {
+            return HRESULT.Success;
+        }
     }
 }

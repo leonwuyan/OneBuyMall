@@ -11,10 +11,12 @@ namespace OneBuyMall
     public partial class Core
     {
         private static Configs SiteConfig;
+        private static Random Rnd;
         public static List<Permission> AdminPermissions;
         public Core(string conn)
         {
             DBHelper._connStr = conn;
+            Rnd = new Random();
             AdminPermissions = GetAllPermission();
         }
     }

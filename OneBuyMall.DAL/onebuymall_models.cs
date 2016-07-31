@@ -77,12 +77,28 @@ public partial class tb_goods_group
 public int id{ set; get; }
 public string name{ set; get; }
 }
+public partial class tb_help
+{
+public int id{ set; get; }
+public string title{ set; get; }
+public string content{ set; get; }
+public int groupid{ set; get; }
+}
+public partial class tb_help_group
+{
+public int id{ set; get; }
+public string name{ set; get; }
+}
 public partial class tb_issue
 {
 public int id{ set; get; }
 public int goodsid{ set; get; }
-public int maxcount{ set; get; }
-public string lastnum{ set; get; }
+public int total{ set; get; }
+public string unsold{ set; get; }
+public int win_num{ set; get; }
+public int winner_order{ set; get; }
+public DateTime opentime{ set; get; }
+public DateTime lastbuytime{ set; get; }
 }
 public partial class tb_log_consume
 {

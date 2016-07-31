@@ -34,6 +34,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\NewLottery\bin\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NewLottery\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,12 +51,20 @@
     <Compile Include="Common\Ext.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Function\Admin.cs" />
+    <Compile Include="Function\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Function\Common.cs" />
     <Compile Include="Function\Customer.cs" />
     <Compile Include="Function\Goods.cs" />
+    <Compile Include="Function\Helper.cs" />
+    <Compile Include="Function\Issue.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Goods.cs" />
+    <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\IndianaLog.cs" />
+    <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\ShareDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

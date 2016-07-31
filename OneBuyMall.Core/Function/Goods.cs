@@ -10,6 +10,7 @@ namespace OneBuyMall
 {
     public partial class Core
     {
+        #region 商品分类
         public List<GoodsGroup> GetGoodsGroups()
         {
             var result = new List<GoodsGroup>();
@@ -78,5 +79,64 @@ namespace OneBuyMall
             }
             return HRESULT.Fail;
         }
+        #endregion
+
+        #region 商品信息
+        public List<Goods> GetAllGoods()
+        {
+            var result = new List<Goods>();
+            var data = db_onebuymall.tb_goods.Select();
+            foreach (var item in data)
+            {
+                var goods = new Goods
+                {
+                    ID = item.id,
+                    Name = item.name,
+                    Desc = item.desc,
+                    Images = item.images.Split('|').ToList(),
+                    Intro = item.intro,
+                    Price = item.price
+                };
+                result.Add(goods);
+            }
+            return result;
+        }
+        public Goods GetGoods(int ID)
+        {
+            var db = db_onebuymall.tb_goods.Select(
+                new db_onebuymall.tb_goods { id = ID }, 
+                null,
+                new db_onebuymall.e_tb_goods[] { db_onebuymall.e_tb_goods.id }
+                ).FirstOrDefault();
+            if(db != null)
+            {
+                return new Goods {
+                    ID = db.id,
+                    Desc = db.desc,
+                    Images = db.images.Split('|').ToList(),
+                    Intro = db.intro,
+                    Name = db.name,
+                    Price = db.price
+                };
+            }
+            return null;
+        }
+        public List<Goods> GetGoodsByGroup(int groupId)
+        {
+            return new List<Goods>();
+        }
+        #endregion
+
+
+        #region 抢购商城
+        public object GetOneStoreItem(int issue)
+        {
+            throw new NotImplementedException();
+        }
+        public List<object> GetOneStoreList(int group)
+        {
+            return new List<object>();
+        }
+        #endregion
     }
 }

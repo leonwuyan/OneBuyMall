@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>后台管理</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="@Url.Content("~/style/css/reg.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/script/jquery.js")" type="text/javascript"></script>
+</head>
+<body>
+<div class="header">
+    dd
+</div>
+<div class="main">
+    @using(@Html.BeginForm())
+    {
+        @Html.TextBox("name", "",new { @class="name" });
+        @Html.Password("pass", "",new { @class = "name" });
+        @Html.Password("c_pass", "",new { @class = "name" });
+        @Html.TextBox("vali", "",new { @class = "name" });
+        @Html.Hidden("channel", @ViewData["channel"]);
+    }
+</div>
+<div class="footer">
+    dd
+</div>
+</body>
+</html>

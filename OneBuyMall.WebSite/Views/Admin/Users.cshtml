@@ -12,18 +12,17 @@
     <script language="javascript">
         function deleteRecord(recordId) {
             if (confirm("确认要删除该条记录？")) {
-                $.post("/Admin/DeleteAdminUser", "id=" + recordId, function (ret) { if (ret.status == 0) { window.location.reload(); } else { alert(ret.msg); } }, "json");
+                $.post("/admin/deleteadminuser", "id=" + recordId, function (ret) { if (ret.status == 0) { window.location.reload(); } else { alert(ret.msg); } }, "json");
             }
         };
         function editRecord(recordId) {
-            window.location.href = "/Admin/AdminUser/" + recordId + ".shtml";
+            window.location.href = "/admin/user/" + recordId + ".shtml";
         };
         function addRecord() {
-            window.location.href = "/Admin/AdminUser/add.shtml";
+            window.location.href = "/admin/user/add.shtml";
         };
-        function showpermission(p)
-        {
-            $.load("/Admin/Permission.shtml", "{p=" + p + "}");
+        function showperm() {
+            $.load("/admin/user", "p=");
         }
     </script>
     <span class="title">>>分类管理</span>

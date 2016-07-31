@@ -12,7 +12,19 @@ namespace OneBuyMall
         public enum HRESULT
         {
             Success,
-            Fail
+            Fail,
+            RemainingLess
+        }
+        public enum MoneyChangeType
+        {
+            Recharge,
+            Consume,
+            Award,
+        }
+        public enum eStore
+        {
+            One,
+            Exchange
         }
     }
 }

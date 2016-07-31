@@ -20,4 +20,13 @@ namespace OneBuyMall.Models
         public string Intro { set; get; }
         public List<string> Images { set; get; }
     }
+    public class OneStoreItem : Goods
+    {
+        public string Issue { set; get; }
+        public int Total { set; get; }
+        public int Sold { set; get; }
+        public List<IndianaLog> IndianaLog { set; get; }
+        public List<ShareDetail> Share { set; get; }
+        public List<GoodsIssue> LastIssue { set; get; }
+    }
 }

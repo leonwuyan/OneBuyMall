@@ -14,24 +14,50 @@ namespace OneBuyMall.WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "Home/{action}/{id}.shtml",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "AdminHome",
+                url: "Admin/index.shtml",
+                defaults: new { controller = "Admin", action = "Index" }
             );
             routes.MapRoute(
-                name: "default1",
-                url: "{controller}/{action}/",
+                name: "Admin",
+                url: "Admin/{action}.shtml",
+                defaults: new { controller = "Admin", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "AdminAdd",
+                url: "Admin/{action}/add.shtml",
+                defaults: new { controller = "Admin", action = "Index", id = 0 }
+            );
+            routes.MapRoute(
+                name: "AdminID",
+                url: "Admin/{action}/{id}.shtml",
+                defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "HomePage1",
+                url: "",
                 defaults: new { controller = "Home", action = "Index" }
             );
             routes.MapRoute(
-                name: "addaction",
-                url: "{controller}/{action}/add.shtml",
-                defaults: new { controller = "Home", action = "Index", id = 0 }
+                name:"HomePage",
+                url:"{action}.shtml",
+                defaults: new { controller = "Home", action = "Login"}
             );
             routes.MapRoute(
-                name: "default2",
-                url: "{controller}/{action}/{id}.shtml",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "Helper",
+                url: "Helper/{gid}-{id}.shtml",
+                defaults: new { controller = "Helper", action = "Index", gid= UrlParameter.Optional, id=UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Cart",
+                url: "Cart/index.shtml",
+                defaults: new { controller = "Cart", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "CartAction",
+                url: "Cart/{action}",
+                defaults: new { controller = "Cart", action = "Index" }
             );
         }
     }

@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace OneBuyMall.WebSite.Controllers
 {
-    public class AdminController : BaseController
+    public class AdminController : Controller
     {
         public ActionResult ShowResult(Result result)
         {
@@ -61,12 +61,12 @@ namespace OneBuyMall.WebSite.Controllers
         }
         #endregion
         #region 管理员管理
-        public ActionResult AdminUsers()
+        public ActionResult Users()
         {
             var data = MvcApplication.core.GetAdminUsers();
             return View(data);
         }
-        public ActionResult AdminUser(int? ID)
+        public ActionResult User(int? ID)
         {
             var data = new AdminUser();
             data.Permission = new System.Collections.BitArray(32,true);
@@ -97,7 +97,7 @@ namespace OneBuyMall.WebSite.Controllers
                 var c = MvcApplication.core.GetGoodsGroup((int)ID);
                 if (c != null)
                     return View(c);
-                return RedirectToAction("ShowResult", ErrorID);
+                return RedirectToAction("ShowResult", new Result { status = 1, msg = "无效的ID", url = "history.back()" });
             }
             else
             {
@@ -135,8 +135,8 @@ namespace OneBuyMall.WebSite.Controllers
         #endregion
         public ActionResult Goods()
         {
-            ViewData["data"] = new List<Goods> { new Goods{ ID=1, Name="testestet"} };
-            return View();
+            var goods = MvcApplication.core.GetAllGoods();
+            return View(goods);
         }
 
     }
