@@ -17,7 +17,7 @@ namespace DALGenerator
         static void Main(string[] args)
         {
             DBHelper._connStr = _connStr;
-            var tables = DBHelper.ExecuteDataTable(new MySqlCommand("use onebuymall;show tables;"));
+            var tables = DBHelper.ExecuteDataTable(new MySqlCommand("use " + dbname + ";show tables;"));
             CreateModels(tables);
             CreateEnums(tables);
             CreateFuns(tables);
