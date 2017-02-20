@@ -3,7 +3,7 @@ body { background:#478ee6}
 a{ text-decoration:none;}
 .header{ height:64px; width:100%; background:#156fdd}
 .head{ height:64px; width:1280px; margin:0 auto; background:#156fdd; position:relative;}
-.logo{float:left; background:url("/style/images/logo.jpg"); width:128px;height:64px; }
+.logo{float:left; background:url("/style/images/logo1.jpg"); width:128px;height:64px; }
 .logout{line-height:24px;position:absolute; bottom:0px;right:0px;background:#ff6a00; border:2px solid #156fdd; border-radius:5px; color:#fff; cursor:pointer; }
 .content{margin:0 auto; width:1280px; height:auto !important; min-height:880px;}
 .leftmenu{float:left; width:120px;height:auto !important;}

@@ -15,7 +15,7 @@ namespace OneBuyMall.WebSite
 
             routes.MapRoute(
                 name: "AdminHome",
-                url: "Admin/index.shtml",
+                url: "Admin/",
                 defaults: new { controller = "Admin", action = "Index" }
             );
             routes.MapRoute(
